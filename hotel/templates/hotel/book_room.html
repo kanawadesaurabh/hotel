@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Room {{ room.number }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Book Room {{ room.number }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="check_in">Check-in:</label>
+        <input type="date" id="check_in" name="check_in" required><br>
+        <label for="check_out">Check-out:</label>
+        <input type="date" id="check_out" name="check_out" required><br>
+        <button type="submit">Book</button>
+    </form>
+</body>
+</html>

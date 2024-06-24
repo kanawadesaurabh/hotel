@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Hotel Management</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Available Rooms</h1>
+    <ul>
+        {% for room in rooms %}
+        {% csrf_token %}
+            <li>{{ room.number }} - {{ room.get_room_type_display }} - ${{ room.price }}
+                {% if room.is_available %}
+                    <a href="{% url 'book_room' room.id %}">Book Now</a>
+                {% else %}
+                    Not Available
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
